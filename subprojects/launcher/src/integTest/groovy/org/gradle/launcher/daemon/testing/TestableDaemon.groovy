@@ -42,7 +42,7 @@ class TestableDaemon {
         println "Killing daemon with pid: $context.pid"
         def output = new ByteArrayOutputStream()
         def e = new ExecHandleBuilder()
-                .commandLine("kill", "-9", context.pid)
+                .commandLine(prepareCommandLine(context.pid))
                 .redirectErrorStream()
                 .setStandardOutput(output)
                 .workingDir(new File(".").absoluteFile) //does not matter
@@ -50,6 +50,16 @@ class TestableDaemon {
         e.start()
         def result = e.waitForFinish()
         result.rethrowFailure()
+    }
+
+    private String[] prepareCommandLine(long pid) {
+        if (OperatingSystem.current().isUnix()) {
+            return ["kill", "-9", context.pid]
+        } else if (OperatingSystem.current().isWindows()) {
+            return ["taskkill.exe", "/T", "/F", "/PID", context.pid]
+        } else {
+            throw new RuntimeException("Sorry, I don't know how to kill processes on ${OperatingSystem.current()}")
+        }
     }
 
     enum State { busy, idle }
