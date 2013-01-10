@@ -49,5 +49,8 @@ As a gradle user, I would like support for "new" test frameworks to be achieved 
 plugins alone so that the community can provide support for any chosen framework and so that the gradle
 core is not bloated by support by each and every test framework.
 
+Design
+======
+
 [junit]:  https://github.com/KentBeck/junit   "JUnit"
 [testng]: http://testng.org/doc/index.html    "TestNG"
