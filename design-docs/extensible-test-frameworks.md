@@ -37,6 +37,7 @@ Stories
 
 As a build master, I would like to use the test framework(s) of our choice in the
 verification phase so that
+
 + I can present a consistent view (of test results) to release management irrespective
 of which framework a specific build uses
 + unit, integration and performance test phases can be handled consistently
@@ -46,8 +47,8 @@ having to reimplement fundamental test execution requirements (such as forking &
 so that I can minimise the cost of introducing new frameworks.
 
 As a gradle user, I would like support for "new" test frameworks to be achieved through
-plugins alone so that the community can provide support for any chosen framework and so that the gradle
-core is not bloated by support by each and every test framework.
+plugins alone so that the community can provide support for any chosen framework hence
+minimising bloat in the gradle core.
 
 Design
 ======
